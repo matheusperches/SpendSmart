@@ -49,11 +49,24 @@ namespace SpendSmart.Controllers
             if (model.Id == 0)
             {
                 // Creating 
+                if (model.Description == null || model.Value.Equals(null))
+                {
+                    // Add an alert message here
+                }
                 _context.Expenses.Add(model);
             }
             else
             {
                 // Editing
+                if (model.Description == null)
+                {
+                    model.Description = "";
+                }
+                if (model.Value.Equals(null))
+                {
+                    model.Value = 0.0m;
+                }
+
                 _context.Expenses.Update(model);
             }
 
