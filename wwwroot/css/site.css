@@ -20,3 +20,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.text-danger {
+    color: #dc3545; /* Standard Bootstrap color for error messages */
+    display: inline-block;
+    margin-right: 10px;
+}

@@ -39,40 +39,36 @@ namespace SpendSmart.Controllers
         public IActionResult DeleteExpense(int id)
         {
             var expenseInDb = _context.Expenses.SingleOrDefault(expense => expense.Id == id);
-            _context.Expenses.Remove(expenseInDb);
-            _context.SaveChanges();
+            if (expenseInDb != null)
+            {
+                _context.Expenses.Remove(expenseInDb);
+                _context.SaveChanges();
+            }
             return RedirectToAction("Expenses");
         }
 
         public IActionResult CreateEditExpenseForm(Expense model)
         {
-            if (model.Id == 0)
+            ModelState.Remove("Id");
+            if (ModelState.IsValid)
             {
-                // Creating 
-                if (model.Description == null || model.Value.Equals(null))
+                if (model.Id == 0)
                 {
-                    // Add an alert message here
+                    // Creating new expense
+                    _context.Expenses.Add(model);
                 }
-                _context.Expenses.Add(model);
+                else
+                {
+                    // Editing existing expense
+                    _context.Expenses.Update(model);
+                }
+
+                _context.SaveChanges();
+                return RedirectToAction("Expenses");
             }
-            else
-            {
-                // Editing
-                if (model.Description == null)
-                {
-                    model.Description = "";
-                }
-                if (model.Value.Equals(null))
-                {
-                    model.Value = 0.0m;
-                }
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
 
-                _context.Expenses.Update(model);
-            }
-
-            _context.SaveChanges();
-
-            return RedirectToAction("Expenses");
+            return View(model);  // Return to the same page if validation fails
         }
 
         public IActionResult Privacy()
