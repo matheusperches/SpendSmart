@@ -15,30 +15,24 @@
         <thead>
             <tr>
                 <th> Id </th>
-                <th>  Value </th>
-                <th>  Description </th>
+                <th> Value </th>
+                <th> Description </th>
                 <th> Actions </th>
             </tr>
         </thead>
         <tbody>
             @{
-                foreach  (var expense in Model)
+                foreach (var expense in Model)
                 {
-                    <tr>
-                        <td>
-                        @expense.Id
-                        </td>
-                        <td>
-                        @expense.Value
-                        </td>
-                        <td>
-                        @expense.Description
-                        </td>
+                            <tr>
+                                <td>@expense.Id</td>
+                                <td>@expense.Value</td>
+                                <td>@expense.Description</td>
                                 <td>
-                            <a asp-action="CreateEditExpense" asp-route-id="@expense.Id">Edit</a>
-                            <a asp-action="DeleteExpense" asp-route-id="@expense.Id">Delete</a>
+                                    <a asp-action="CreateEditExpense" asp-route-id="@expense.Id">Edit</a>
+                                    <a asp-action="DeleteExpense" asp-route-id="@expense.Id" onclick="return confirm('Are you sure you want to delete this expense?');">Delete</a>
                                 </td>
-                    </tr>
+                            </tr>
                 }
             }
         </tbody>
