@@ -10,7 +10,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: SpendSmart/published # Ensure this matches the actual publish directory
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: SpendSmart # Ensure this points to the directory containing .csproj
+  WORKING_DIRECTORY: SpendSmart/SpendSmart # Ensure this points to the directory containing .csproj
 
 jobs:
   build:
