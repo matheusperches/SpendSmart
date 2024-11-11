@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\views\\home\\createeditexpense.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\views\\home\\createeditexpense.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\views\\home\\createeditexpense.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\views\\home\\createeditexpense.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,11 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CreateEditExpense.cshtml",
               "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Views\\Home\\CreateEditExpense.cshtml",
               "RelativeDocumentMoniker": "SpendSmart\\Views\\Home\\CreateEditExpense.cshtml",
@@ -47,7 +47,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ExpensesController.cs",
               "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\ExpensesController.cs",
               "RelativeDocumentMoniker": "SpendSmart\\Controllers\\ExpensesController.cs",
@@ -60,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "SpendSmart\\Controllers\\HomeController.cs",
@@ -68,11 +68,12 @@
               "RelativeToolTip": "SpendSmart\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T17:01:59.917Z"
+              "WhenOpened": "2024-11-06T17:01:59.917Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\appsettings.json",
               "RelativeDocumentMoniker": "SpendSmart\\appsettings.json",
@@ -80,7 +81,8 @@
               "RelativeToolTip": "SpendSmart\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-06T17:01:05.484Z"
+              "WhenOpened": "2024-11-06T17:01:05.484Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
