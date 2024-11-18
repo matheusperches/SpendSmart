@@ -2,6 +2,13 @@
 
 namespace SpendSmart.Models
 {
+    public class Code
+    { 
+        public int Id { get; set; }
+        public string Value { get; set; } =  Guid.NewGuid().ToString(); // Generating GUIDs for uniqueness
+        public ICollection<Expense> Expenses { get; set; } = [];
+    }
+
     public class Expense
     {
         public int Id { get; set; }
@@ -12,5 +19,7 @@ namespace SpendSmart.Models
 
         [Required(ErrorMessage = "Description is required")]
         public string? Description { get; set; }
+        public int? CodeId { get; set; } // Foreign Key 
+        public Code? Code { get; set; } // Navigation property 
     }
 }
