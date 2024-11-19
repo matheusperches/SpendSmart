@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\models\\spendsmartdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\models\\spendsmartdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\controllers\\codecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\controllers\\codecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\views\\home\\expenses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\views\\home\\expenses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\views\\shared\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\views\\shared\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|solutionrelative:spendsmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{83E2D452-208C-49DC-9B21-DFE497DA7C5F}|SpendSmart\\SpendSmart.csproj|c:\\users\\mathe\\desktop\\dotnet_projects\\spendsmart\\spendsmart\\views\\home\\createeditexpense.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -38,45 +42,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SpendSmartDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Models\\SpendSmartDbContext.cs",
-              "RelativeDocumentMoniker": "SpendSmart\\Models\\SpendSmartDbContext.cs",
-              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Models\\SpendSmartDbContext.cs",
-              "RelativeToolTip": "SpendSmart\\Models\\SpendSmartDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T17:32:50.885Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Expense.cs",
               "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Models\\Expense.cs",
               "RelativeDocumentMoniker": "SpendSmart\\Models\\Expense.cs",
               "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Models\\Expense.cs",
               "RelativeToolTip": "SpendSmart\\Models\\Expense.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T17:29:45.985Z",
+              "WhenOpened": "2024-11-19T01:17:33.455Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Program.cs",
+              "RelativeDocumentMoniker": "SpendSmart\\Program.cs",
+              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Program.cs",
+              "RelativeToolTip": "SpendSmart\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCUAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T01:02:57.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "CreateEditExpense.cshtml",
               "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Views\\Home\\CreateEditExpense.cshtml",
               "RelativeDocumentMoniker": "SpendSmart\\Views\\Home\\CreateEditExpense.cshtml",
               "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Views\\Home\\CreateEditExpense.cshtml",
               "RelativeToolTip": "SpendSmart\\Views\\Home\\CreateEditExpense.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-06T17:11:42.117Z",
+              "WhenOpened": "2024-11-18T23:32:55.964Z",
               "EditorCaption": ""
             },
             {
@@ -87,48 +91,61 @@
               "RelativeDocumentMoniker": "SpendSmart\\Controllers\\ExpensesController.cs",
               "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\ExpensesController.cs",
               "RelativeToolTip": "SpendSmart\\Controllers\\ExpensesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T17:02:00.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "SpendSmart\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "SpendSmart\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T17:01:59.917Z",
+              "WhenOpened": "2024-11-18T23:27:31.568Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\appsettings.json",
-              "RelativeDocumentMoniker": "SpendSmart\\appsettings.json",
-              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\appsettings.json",
-              "RelativeToolTip": "SpendSmart\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-06T17:01:05.484Z",
+              "Title": "CodeController.cs",
+              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\CodeController.cs",
+              "RelativeDocumentMoniker": "SpendSmart\\Controllers\\CodeController.cs",
+              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\CodeController.cs",
+              "RelativeToolTip": "SpendSmart\\Controllers\\CodeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T23:27:07.586Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Program.cs",
-              "RelativeDocumentMoniker": "SpendSmart\\Program.cs",
-              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Program.cs",
-              "RelativeToolTip": "SpendSmart\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAASAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "SpendSmart\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "SpendSmart\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:35:35.049Z",
+              "WhenOpened": "2024-11-18T23:25:49.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Expenses.cshtml",
+              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Views\\Home\\Expenses.cshtml",
+              "RelativeDocumentMoniker": "SpendSmart\\Views\\Home\\Expenses.cshtml",
+              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Views\\Home\\Expenses.cshtml",
+              "RelativeToolTip": "SpendSmart\\Views\\Home\\Expenses.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-18T23:22:26.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Views\\Shared\\Index.cshtml",
+              "RelativeDocumentMoniker": "SpendSmart\\Views\\Shared\\Index.cshtml",
+              "ToolTip": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\Views\\Shared\\Index.cshtml",
+              "RelativeToolTip": "SpendSmart\\Views\\Shared\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-18T23:20:53.277Z",
               "EditorCaption": ""
             }
           ]
