@@ -1,12 +1,34 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 
 namespace SpendSmart.Models
 {
     public class Code
     { 
         public int Id { get; set; }
-        public string Value { get; set; } =  Guid.NewGuid().ToString(); // Generating GUIDs for uniqueness
+        public string Value { get; set; }
         public ICollection<Expense> Expenses { get; set; } = [];
+        public Code() 
+        {
+            Value = GenerateShortCode();
+        }
+
+        public static string GenerateShortCode(int length = 6)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var result = new char[length];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                var byteBuffer = new byte[length];
+                rng.GetBytes(byteBuffer);
+
+                for (int i = 0; i < length; i++)
+                {
+                    result[i] = chars[byteBuffer[i] % chars.Length];
+                }
+            }
+            return new string(result);
+        }
     }
 
     public class Expense

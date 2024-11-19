@@ -15,15 +15,20 @@ namespace SpendSmart.Controllers
 
         // Generate a new random code and saving it to  the database
         [HttpPost]
-        public async Task<IActionResult> CreateCode()
+        public IActionResult CreateCode()
         {
-            var code = new Code();
-            _context.Codes.Add(code);
-            await _context.SaveChangesAsync();
+            string generatedCode;
+            do
+            {
+                generatedCode = Code.GenerateShortCode();
 
-            TempData["GeneratedCode"] = code.Value;
-            ViewBag.GeneratedCode = code.Value;
-            return View("Index");
+            } while (_context.Codes.Any(c => c.Value == generatedCode));
+            var code = new Code { Value = generatedCode };
+            _context.Codes.Add(code);
+            _context.SaveChanges();
+
+            TempData["GeneratedCode"] = code.Value; // Pass the code to the redirected page
+            return RedirectToAction("Index");
         }
 
         // Fetch expenses associated with a code
