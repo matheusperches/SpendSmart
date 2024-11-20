@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using SpendSmart.Models;
 using Microsoft.EntityFrameworkCore;
+using SpendSmart.Models;
 
 namespace SpendSmart.Controllers
 {
@@ -17,6 +15,7 @@ namespace SpendSmart.Controllers
         public ActionResult<IEnumerable<Expense>> GetExpense() { return _context.Expenses.ToList(); }
 
         // GET: api/expenses/5
+        [HttpGet("{id}")]
         public ActionResult<Expense> GetExpense(int id)
         {
             var expense = _context.Expenses.Find(id);

@@ -9,28 +9,56 @@
     <div class="row justify-content-center mt-3">
         <!-- Code input and action section -->
         <div class="col-md-8">
-            <form class="d-flex justify-content-center align-items-center flex-wrap" method="post">
+            <form asp-controller="Home" asp-action="GetExpensesByCode" method="get" data-received-code="123456" class="d-flex justify-content-center align-items-center flex-wrap">
                 <label for="codeInput" class="form-label me-2">Enter Code:</label>
                 <input type="text"
                        id="codeInput"
                        name="codeValue"
                        placeholder="Enter your code"
                        class="form-control me-2"
-                       style="max-width: 250px;" />
-                <button formaction="/Expenses" formmethod="get" type="submit" class="btn btn-success me-2">Submit</button>
-                <button formaction="/Code/CreateCode" formmethod="post" type="submit" class="btn btn-primary">Generate New Code</button>
+                       style="max-width: 250px;"
+                       maxlength="6"
+                       required />
+                <button type="submit" class="btn btn-success me-2">Submit</button>
+                </form>
+
+            <form asp-controller="Code" asp-action="CreateCode" id="codeForm" method="post" class="d-flex justify-content-center align-items-center flex-wrap mt-2">
+                <button type="submit" id="createCode" class="btn btn-primary">Generate New Code</button>
             </form>
         </div>
     </div>
 
+    <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            const codeContainer = document.getElementById('generatedCodeContainer');
+            if (codeContainer) {
+                // Get the generated code value
+                const generatedCode = document.getElementById('generatedCode').textContent.trim();
+
+                // Set the value of the code input field
+                const codeInput = document.getElementById('codeInput');
+                if (codeInput) {
+                    codeInput.value = generatedCode;
+                }
+            }
+        });
+    </script>
 
 
     @if (TempData["GeneratedCode"] != null)
     {
-        <div class="mt-3">
+        <div id="generatedCodeContainer" class="mt-3">
             <h3>Your new code: </h3>
-            <p class="alert alert-success"><strong>@TempData["GeneratedCode"]</strong></p>
+            <p class="alert alert-success">
+                <strong id="generatedCode">@TempData["GeneratedCode"]</strong>
+                </p>
             <h4> Store it safely. </h4>
             </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="mt-3">
+        <p class="alert alert-danger">@TempData["ErrorMessage"]</p>
+        </div>
     }
 </div>

@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SpendSmart.bundle.scp.css",
-      "PackagePath": "staticwebassets\\SpendSmart.bundle.scp.css"
+      "PackagePath": "staticwebassets\\SpendSmart.62iwvouqp9.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\wwwroot\\css\\site.css",
@@ -243,6 +243,10 @@
     {
       "Id": "C:\\Users\\mathe\\Desktop\\dotnet_projects\\SpendSmart\\SpendSmart\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SpendSmart.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SpendSmart.Microsoft.AspNetCore.StaticWebAssets.props",

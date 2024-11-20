@@ -1,40 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "Create / Edit";
+    ViewData["Title"] = (Model.Id == 0 ? "Create" : "Edit") + " Expense";
 }
 
 @model SpendSmart.Models.Expense
 
-
 <div class="text-center">
-    <h1 class="display-4">@((Model.Id == 0 ? "Create" : "Edit")) Expense</h1>
+    <h1 class="display-4">@ViewData["Title"]</h1>
 </div>
 
-<form asp-action="CreateEditExpenseForm" asp-controller="Home"  method ="post" class="row g-3">
-
+<form asp-action="CreateEditExpenseForm" asp-controller="Home" method="post" class="row g-3">
+    <!-- Hidden ID Field (for editing) -->
     @if (Model.Id != 0)
     {
-            <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Id" />
     }
 
     <!-- Value Field -->
     <div class="col-md-6">
         <label for="value" class="form-label">Value $</label>
-        <input type="number" class="form-control" id="value" asp-for="Value" step="0.01" placeholder="Enter value" required/>
+        <input type="number" class="form-control" id="value" asp-for="Value" step="0.01" placeholder="Enter value" required />
         <span asp-validation-for="Value" class="text-danger"></span>
     </div>
 
     <!-- Description Field -->
     <div class="col-md-6">
         <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" asp-for="Description" placeholder="Add a description" required/>
+        <input type="text" class="form-control" id="description" asp-for="Description" placeholder="Add a description" required />
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
-
-    <!-- Hidden ID Field for Editing -->
-    <input hidden class="form-control" type="number" asp-for="Id"/>
 
     <!-- Submit Button -->
     <div class="col-12">
         <button class="btn btn-primary" type="submit">Submit form</button>
     </div>
 </form>
+
+<!-- Validation Scripts -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

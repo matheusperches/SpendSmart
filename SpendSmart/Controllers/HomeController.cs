@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SpendSmart.Models;
 using System.Diagnostics;
 
@@ -14,6 +15,41 @@ namespace SpendSmart.Controllers
         {
             return View();
         }
+
+        [HttpGet("GetExpensesByCode")]
+        public ActionResult<IEnumerable<Expense>> GetExpensesByCode(string codeValue)
+        {
+            // Find the code and the associated expenses 
+            var code = _context.Codes.Include(c => c.Expenses).FirstOrDefault(c => c.Value == codeValue);
+            if (code == null)
+            {
+                TempData["ErrorMessage"] = "Code not found";
+                return View("Index");
+            }
+            return View("ExpensesList", code.Expenses.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult CreateEditExpense(List<Expense> expenses)
+        {
+            foreach (var expense in expenses)
+            {
+                if (expense.Id == 0)
+                {
+                    // Add new expense
+                    _context.Expenses.Add(expense);
+                }
+                else
+                {
+                    // Update existing expense
+                    _context.Expenses.Update(expense);
+                }
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("ExpensesList");  // Redirect to the list of expenses after saving
+        }
+
 
         public IActionResult Expenses() 
         {
