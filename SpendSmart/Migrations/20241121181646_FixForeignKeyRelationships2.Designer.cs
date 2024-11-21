@@ -11,26 +11,46 @@ using SpendSmart.Models;
 namespace SpendSmart.Migrations
 {
     [DbContext(typeof(SpendSmartDbContext))]
-    [Migration("20241106220616_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241121181646_FixForeignKeyRelationships2")]
+    partial class FixForeignKeyRelationships2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SpendSmart.Models.Expense", b =>
+            modelBuilder.Entity("SpendSmart.Models.Code", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ShortCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShortCode")
+                        .IsUnique();
+
+                    b.ToTable("Codes");
+                });
+
+            modelBuilder.Entity("SpendSmart.Models.Expense", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CodeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -42,6 +62,22 @@ namespace SpendSmart.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("SpendSmart.Models.Expense", b =>
+                {
+                    b.HasOne("SpendSmart.Models.Code", "Code")
+                        .WithMany("Expenses")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Code");
+                });
+
+            modelBuilder.Entity("SpendSmart.Models.Code", b =>
+                {
+                    b.Navigation("Expenses");
                 });
 #pragma warning restore 612, 618
         }

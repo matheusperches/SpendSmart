@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpendSmart.Models;
 
@@ -10,9 +11,11 @@ using SpendSmart.Models;
 namespace SpendSmart.Migrations
 {
     [DbContext(typeof(SpendSmartDbContext))]
-    partial class SpendSmartDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241121182057_FixForeignKeyRelationships4")]
+    partial class FixForeignKeyRelationships4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
+using Microsoft.Extensions.Logging.Abstractions;
 using SpendSmart.Models;
 using System.Diagnostics;
 
@@ -20,7 +22,7 @@ namespace SpendSmart.Controllers
         public ActionResult<IEnumerable<Expense>> GetExpensesByCode(string codeValue)
         {
             // Find the code and the associated expenses 
-            var code = _context.Codes.Include(c => c.Expenses).FirstOrDefault(c => c.Value == codeValue);
+            var code = _context.Codes.Include(c => c.Expenses).FirstOrDefault(c => c.ShortCode == codeValue);
             if (code == null)
             {
                 TempData["ErrorMessage"] = "Code not found";
@@ -90,25 +92,45 @@ namespace SpendSmart.Controllers
 
         public IActionResult CreateEditExpenseForm(Expense model)
         {
+            // Removing Id validation
             ModelState.Remove("Id");
+
+            // Validating the model 
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)
                 {
+                    var code = _context.Codes.Find(model.CodeId);
+                    if (code == null)
+                    {
+                        return NotFound(); // Handling invalid code id for any given reason
+                    }
                     // Creating new expense
                     _context.Expenses.Add(model);
                 }
                 else
                 {
-                    // Editing existing expense
-                    _context.Expenses.Update(model);
+                    // Fetching the existing expense, then updating & saving 
+                    var existingExpense = _context.Expenses.Find(model.Id);
+                    if (existingExpense != null)
+                    {
+                        existingExpense.Value = model.Value;
+                        existingExpense.Description = model.Description;
+                    }
+                    else
+                    {
+                        // Handle the case where the expense isn't found
+                        ModelState.AddModelError("", "Expense not found.");
+                        return View(model);
+                    }
                 }
 
                 _context.SaveChanges();
-                return RedirectToAction("Expenses");
+                return RedirectToAction("ExpensesList", new {codeId = model.CodeId});
             }
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
 
+            // If validation fails, collect errors and return to the form
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             return View(model);  // Return to the same page if validation fails
         }
 

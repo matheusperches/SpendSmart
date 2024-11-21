@@ -1,91 +1,91 @@
 ﻿@{
-    ViewData["Title"] = "Expenses";
+	ViewData["Title"] = "Expenses";
 }
 
 @model List<SpendSmart.Models.Expense>
 
 <div class="text-center">
-    <h1 class="display-4">Expenses</h1>
-    <br />
-    <hr />
-    <h3>
-        @if (Model != null && Model.Any())
-        {
-            @($"Total Expenses: ${Model.Sum(exp => exp.Value)}")
-        }
-        else
-        {
-            @("No expenses to display yet.")
-        }
-    </h3>
-    <br />
+	<h1 class="display-4">Expenses</h1>
+	<br />
+	<hr />
+	<h3>
+		@if (Model != null && Model.Any())
+		{
+			@($"Total Expenses: ${Model.Sum(exp => exp.Value)}")
+		}
+		else
+		{
+			@("No expenses to display yet.")
+		}
+	</h3>
+	<br />
 
-    <div class="text-end mb-3">
-        <a asp-action="CreateEditExpense" class="btn btn-primary">Create New Expense</a>
-        <!-- Add Button -->
-        <button type="button" id="addExpenseButton" class="btn btn-secondary">Add New Expense</button>
-    </div>
+	<div class="container">
+		<div class="table-wrapper">
+			<div class="table-title">
+			</div>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Value</th>
+						<th>Description</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model != null)
+					{
+						@foreach (var expense in Model)
+						{
+							<tr>
+								<td>@expense.Value</td>
+								<td>@expense.Description</td>
+								<td>
+									<form asp-controller="Expenses" asp-action="DeleteExpense" method="post">
+										<input type="hidden" name="id" value="@expense.Id" />
+										<button type="submit" class="btn btn-danger"> Delete</button>
+									</form>
+								</td>
+							</tr>
+						}
+					}
+					<tr>
+						<form asp-controller="Home" asp-action="CreateEditExpenseForm" method="post">
+						<td>
+							<input type="number"
+								   name="value"
+								   class="form-control"
+								   placeholder="Enter value"
+								   step="0.01"
+								   required />
+						</td>
+						<td>
+							<input type="text"
+								   name="Description"
+								   class="form-control"
+								   placeholder="Enter description"
+								   maxlength="100"
+								   required />
+						</td>
+						<td>
+							<button type="submit" class="btn btn-primary">Add</button>
+						</td>
+						</form>
 
-    <form id="expensesForm" method="post" asp-action="CreateEditExpense" class="row g-3">
-        <div id="expenseFormContainer">
-            @if (Model != null)
-                @foreach (var expense in Model)
-                {
-                    <div class="expense-entry" data-expense-id="@expense.Id">
-                        <div class="col-md-6">
-                            <label for="value" class="form-label">Value $</label>
-                            <input type="number" class="form-control" name="expenses[@expense.Id].Value" value="@expense.Value" step="0.01" required />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" name="expenses[@expense.Id].Description" value="@expense.Description" required />
-                        </div>
-                        <div class="col-12">
-                            <a href="javascript:void(0);" class="remove-expense-entry">Remove</a>
-                        </div>
-                    </div>
-                }
-        </div>
-
-        <!-- Hidden Empty Form Entry Template -->
-        <div id="emptyExpenseTemplate" style="display:none;">
-            <div class="expense-entry">
-                <div class="col-md-6">
-                    <label for="value" class="form-label">Value $</label>
-                    <input type="number" class="form-control" name="expenses[0].Value" value="" step="0.01" required />
-                </div>
-
-                <div class="col-md-6">
-                    <label for="description" class="form-label">Description</label>
-                    <input type="text" class="form-control" name="expenses[0].Description" value="" required />
-                </div>
-                <div class="col-12">
-                    <a href="javascript:void(0);" class="remove-expense-entry">Remove</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 
-@section Scripts {
-    <script>
-        // Handle the "Add New Expense" button click
-        document.getElementById('addExpenseButton').addEventListener('click', function() {
-            // Clone the hidden template and add it to the form container
-            var template = document.getElementById('emptyExpenseTemplate').firstElementChild.cloneNode(true);
-            document.getElementById('expenseFormContainer').appendChild(template);
-        });
+<script>
+	function addExpense(){
+		const value = document.getElementById('newValue').value;
+		const description = document.getElementById('newDescription').value;
 
-        // Handle the "Remove" link to remove an expense entry
-        document.getElementById('expensesForm').addEventListener('click', function(e) {
-            if (e.target && e.target.classList.contains('remove-expense-entry')) {
-                e.target.closest('.expense-entry').remove();
-            }
-        });
-    </script>
-}
+		if (!value || !description){
+			alert("please fill out both fields")
+		}
+	}
+</script>
