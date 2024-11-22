@@ -14,7 +14,7 @@ namespace SpendSmart
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<SpendSmartDbContext>(
-                options => options.UseSqlServer(builder.Configuration.GetConnectionString("LocalConnection"))
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection"))
                 );
 
             var app = builder.Build();
