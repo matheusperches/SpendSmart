@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SpendSmart.Models;
 
 namespace SpendSmart
@@ -13,7 +14,7 @@ namespace SpendSmart
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<SpendSmartDbContext>(
-                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection"))
                 );
 
             var app = builder.Build();
@@ -36,6 +37,20 @@ namespace SpendSmart
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<SpendSmartDbContext>();
+                try
+                {
+                    context.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
 
             app.Run();
         }

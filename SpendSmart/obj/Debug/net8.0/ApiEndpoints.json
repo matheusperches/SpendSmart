@@ -21,16 +21,16 @@
   },
   {
     "ContainingType": "SpendSmart.Controllers.ExpensesController",
-    "Method": "GetExpense",
+    "Method": "PostExpense",
     "RelativePath": "api/Expenses",
-    "HttpMethod": "",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "expense",
+        "Type": "SpendSmart.Models.Expense",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -47,15 +47,15 @@
   },
   {
     "ContainingType": "SpendSmart.Controllers.ExpensesController",
-    "Method": "PostExpense",
-    "RelativePath": "api/Expenses",
-    "HttpMethod": "POST",
+    "Method": "GetExpense",
+    "RelativePath": "api/Expenses/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "expense",
-        "Type": "SpendSmart.Models.Expense",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

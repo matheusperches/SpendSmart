@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
+using Microsoft.Extensions.Logging.Abstractions;
 using SpendSmart.Models;
 using System.Diagnostics;
 
@@ -14,78 +17,122 @@ namespace SpendSmart.Controllers
         {
             return View();
         }
+        public ActionResult<IEnumerable<Expense>> ExpensesList(string codeValue)
+        {
+            // Find the code and the associated expenses 
+            var code = _context.Codes.Include(c => c.Expenses).First(c => c.Value == codeValue);
+            if (code == null)
+            {
+                TempData["ErrorMessage"] = "Code not found";
+                return View("Index");
+            }
 
+            return View("ExpensesList", code.Expenses.ToList());
+        }
         public IActionResult Expenses() 
         {
             var expenses = _context.Expenses.ToList();
             ViewBag.Expenses = expenses.Sum(e => e.Value); // Calculate total expenses
             return View(expenses);
         }
-        public IActionResult CreateEditExpense(int? id)
+        public IActionResult CreateExpense(Expense model, string codeValue)
         {
-            Expense? model;
-            if (id.HasValue && id.Value > 0)
-            {
-                model = _context.Expenses.Find(id.Value);
-
-                if (model == null)
-                {
-                    return NotFound();
-                }
-            }
-            else
-            {
-                // Initialize a new Expense instance for creating a new record 
-                model = new Expense();
-            }
-            return View(model);
-        }
-
-        public IActionResult DeleteExpense(int id)
-        {
-            var expenseInDb = _context.Expenses.SingleOrDefault(expense => expense.Id == id);
-            if (expenseInDb != null)
-            {
-                _context.Expenses.Remove(expenseInDb);
-                _context.SaveChanges();
-            }
-            return RedirectToAction("Expenses");
-        }
-
-        public IActionResult CreateEditExpenseForm(Expense model)
-        {
+            // Remove Id validation if it's a new expense
             ModelState.Remove("Id");
+
+            // Validating the model 
             if (ModelState.IsValid)
             {
+                // Fetch the CodeId from the codeValue (ShortCode) passed in the query string
+                var code = _context.Codes.FirstOrDefault(c => c.Value == codeValue);
+
+                if (code == null)
+                {
+                    // Handle invalid code value
+                    ModelState.AddModelError("", "Invalid Code.");
+                    return View(model);
+                }
+
+                // Set the CodeId in the Expense model
+                model.CodeId = code.Id;
+
                 if (model.Id == 0)
                 {
-                    // Creating new expense
+                    // Creating a new expense
                     _context.Expenses.Add(model);
                 }
                 else
                 {
-                    // Editing existing expense
-                    _context.Expenses.Update(model);
+                    // Fetching the existing expense, then updating & saving 
+                    var existingExpense = _context.Expenses.Find(model.Id);
+                    if (existingExpense != null)
+                    {
+                        existingExpense.Value = model.Value;
+                        existingExpense.Description = model.Description;
+                        existingExpense.CodeId = model.CodeId;  // Update the CodeId if needed
+                    }
+                    else
+                    {
+                        // Handle the case where the expense isn't found
+                        ModelState.AddModelError("", "Expense not found.");
+                        return View(model);
+                    }
                 }
 
+                // Save changes to the database
                 _context.SaveChanges();
-                return RedirectToAction("Expenses");
+
+                // Redirect to the expenses list with the codeId
+                return RedirectToAction("ExpensesList", new { codeValue });
             }
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
 
-            return View(model);  // Return to the same page if validation fails
+            TempData["ErrorMessage"] = "Model error.";
+            // Return the view with validation errors if any
+            return RedirectToAction("ExpensesList");
         }
-
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult UpdateExpense(Expense model, string codeValue)
         {
-            return View();
+            var existingExpense = _context.Expenses.SingleOrDefault(e => e.Id == model.Id);
+            if (existingExpense == null || !ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Expense not found or invalid model state.";
+                return RedirectToAction("ExpensesList", new { codeValue });
+            }
+
+            // Update expense details
+            existingExpense.Value = model.Value;
+            existingExpense.Description = model.Description;
+
+            _context.SaveChanges();
+
+            // Redirect to the list to refresh the view
+            return RedirectToAction("ExpensesList", new { codeValue });
         }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult DeleteExpense(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            // Find the expense in the database
+            var expenseInDb = _context.Expenses.SingleOrDefault(expense => expense.Id == id);
+
+            if (expenseInDb != null)
+            {
+                // Find the associated code value
+                var codeValue = _context.Codes
+                    .Where(code => code.Id == expenseInDb.CodeId)
+                    .Select(code => code.Value)
+                    .FirstOrDefault();
+
+                // Remove the expense
+                _context.Expenses.Remove(expenseInDb);
+                _context.SaveChanges();
+
+                // Redirect to the ExpensesList with the current codeValue
+                return RedirectToAction("ExpensesList", new { codeValue });
+            }
+
+            // Handle case where the expense is not found
+            TempData["ErrorMessage"] = "Expense not found.";
+            return RedirectToAction("ExpensesList");
         }
     }
 }

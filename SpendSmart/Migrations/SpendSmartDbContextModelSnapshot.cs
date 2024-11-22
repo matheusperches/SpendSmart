@@ -16,10 +16,30 @@ namespace SpendSmart.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("SpendSmart.Models.Code", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Value")
+                        .IsUnique();
+
+                    b.ToTable("Codes");
+                });
 
             modelBuilder.Entity("SpendSmart.Models.Expense", b =>
                 {
@@ -28,6 +48,9 @@ namespace SpendSmart.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CodeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -38,7 +61,25 @@ namespace SpendSmart.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CodeId");
+
                     b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("SpendSmart.Models.Expense", b =>
+                {
+                    b.HasOne("SpendSmart.Models.Code", "Code")
+                        .WithMany("Expenses")
+                        .HasForeignKey("CodeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Code");
+                });
+
+            modelBuilder.Entity("SpendSmart.Models.Code", b =>
+                {
+                    b.Navigation("Expenses");
                 });
 #pragma warning restore 612, 618
         }
