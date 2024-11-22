@@ -39,36 +39,54 @@
 					{
 						@foreach (var expense in Model)
 						{
-							<tr id="expenseRow-@expense.Id">
+							<tr id="expenseRow-@expense.Id" class="view-mode">
+								<!-- View Mode Row -->
+								<td>@expense.Value</td>
+								<td>@expense.Description</td>
 								<td>
-									<span class="view-mode">@expense.Value</span>
-									<input type="number" name="value" class="form-control edit-mode d-none" value="@expense.Value" step="0.01" required />
+									<button type="button"
+											class="btn btn-outline-info edit-btn"
+											data-expense-id="@expense.Id">
+										Edit
+									</button>
+									<form asp-controller="Home" asp-action="DeleteExpense" method="post" class="d-inline">
+										<input type="hidden" name="id" value="@expense.Id" />
+										<button type="submit" class="btn btn-outline-danger">Delete</button>
+									</form>
+								</td>
+							</tr>
+							<tr id="editRow-@expense.Id" class="edit-mode d-none">
+								<!-- Edit Mode Row -->
+								<form asp-controller="Home" asp-action="UpdateExpense"
+									  method="post"
+									  asp-route-codeValue="@Context.Request.Query["codeValue"]">
+								<td>
+									<input type="number"
+										   name="Value"
+										   class="form-control"
+										   value="@expense.Value"
+										   step="0.01"
+										   required />
 								</td>
 								<td>
-									<span class="view-mode">@expense.Description</span>
-									<input type="text" name="description" class="form-control edit-mode d-none" value="@expense.Description" maxlength="100" required />
+									<input type="text"
+										   name="Description"
+										   class="form-control"
+										   value="@expense.Description"
+										   maxlength="100"
+										   required />
 								</td>
 								<td>
-									<div class="view-mode">
-										<button type="button" class="btn btn-outline-info edit-btn" data-expense-id="@expense.Id">Edit</button>
-										<form asp-controller="Home" asp-action="DeleteExpense" method="post" class="d-inline">
-											<input type="hidden" name="id" value="@expense.Id" />
-											<button type="submit" class="btn btn-outline-danger">Delete</button>
-										</form>
-									</div>
-									<div class="edit-mode d-none">
-										<form asp-controller="Home" asp-action="UpdateExpense" method="post" asp-route-codeValue="@Context.Request.Query["codeValue"]" class="d-inline">
-											<input type="hidden" name="id" value="@expense.Id" />
-											<input type="number" name="value" class="form-control" value="@expense.Value" required />
-											<input type="text" name="description" class="form-control" value="@expense.Description" maxlength="100" required />
-											<button type="submit" class="btn btn-primary">Save</button>
-										</form>
-										<button type="button" class="btn btn-secondary cancel-edit-btn">Cancel</button>
-									</div>
+									<input type="hidden" name="id" value="@expense.Id" />
+									<button type="submit" class="btn btn-primary">Save</button>
+									<button type="button" class="btn btn-secondary cancel-edit-btn">Cancel</button>
 								</td>
+								</form>
 							</tr>
 						}
 					}
+
+
 					<tr>
 						<form asp-controller="Home" asp-action="CreateExpense" method="post" asp-route-codeValue="@Context.Request.Query["codeValue"]">
 						<td>
@@ -105,26 +123,25 @@
 </div>
 
 <script>
-	document.addEventListener("DOMContentLoaded", function () {
-		const rows = document.querySelectorAll("[id^='expenseRow-']");
+			document.querySelectorAll('.edit-btn').forEach(button => {
+		button.addEventListener('click', function () {
+			const expenseId = this.dataset.expenseId;
 
-		rows.forEach(row => {
-			const editButton = row.querySelector(".edit-btn");
-			const cancelEditButton = row.querySelector(".cancel-edit-btn");
-			const viewModeElements = row.querySelectorAll(".view-mode");
-			const editModeElements = row.querySelectorAll(".edit-mode");
-
-			// Edit Button Handler
-			editButton.addEventListener("click", () => {
-				viewModeElements.forEach(el => el.classList.add("d-none"));
-				editModeElements.forEach(el => el.classList.remove("d-none"));
-			});
-
-			// Cancel Edit Button Handler
-			cancelEditButton.addEventListener("click", () => {
-				viewModeElements.forEach(el => el.classList.remove("d-none"));
-				editModeElements.forEach(el => el.classList.add("d-none"));
-			});
+			// Toggle view and edit rows
+			document.getElementById(`expenseRow-${expenseId}`).classList.add('d-none');
+			document.getElementById(`editRow-${expenseId}`).classList.remove('d-none');
 		});
 	});
+
+	document.querySelectorAll('.cancel-edit-btn').forEach(button => {
+		button.addEventListener('click', function () {
+			const row = this.closest('tr.edit-mode');
+			const expenseId = row.id.replace('editRow-', '');
+
+			// Toggle back to view row
+			row.classList.add('d-none');
+			document.getElementById(`expenseRow-${expenseId}`).classList.remove('d-none');
+		});
+	});
+
 </script>

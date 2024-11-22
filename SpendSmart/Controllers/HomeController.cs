@@ -94,9 +94,9 @@ namespace SpendSmart.Controllers
         public IActionResult UpdateExpense(Expense model, string codeValue)
         {
             var existingExpense = _context.Expenses.SingleOrDefault(e => e.Id == model.Id);
-            if (existingExpense == null)
+            if (existingExpense == null || !ModelState.IsValid)
             {
-                TempData["ErrorMessage"] = "Expense not found.";
+                TempData["ErrorMessage"] = "Expense not found or invalid model state.";
                 return RedirectToAction("ExpensesList", new { codeValue });
             }
 
