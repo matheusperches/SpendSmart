@@ -12,7 +12,7 @@ namespace SpendSmart.Models
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Code>()
-                .HasIndex(c => c.ShortCode)
+                .HasIndex(c => c.Value)
                 .IsUnique();
             modelBuilder.Entity<Expense>()
                 .HasOne(e => e.Code)

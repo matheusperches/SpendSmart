@@ -29,13 +29,13 @@ namespace SpendSmart.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ShortCode")
+                    b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShortCode")
+                    b.HasIndex("Value")
                         .IsUnique();
 
                     b.ToTable("Codes");

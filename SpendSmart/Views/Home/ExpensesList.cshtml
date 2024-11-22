@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Azure.Core
+
+@{
 	ViewData["Title"] = "Expenses";
 }
 
@@ -50,7 +52,7 @@
 						}
 					}
 					<tr>
-						<form asp-controller="Home" asp-action="CreateEditExpenseForm" method="post">
+						<form asp-controller="Home" asp-action="CreateEditExpenseForm" method="post" asp-route-codeValue="@Context.Request.Query["codeValue"]">
 						<td>
 							<input type="number"
 								   name="value"
@@ -75,17 +77,12 @@
 					</tr>
 				</tbody>
 			</table>
+			@if (TempData["ErrorMessage"] != null)
+			{
+				<div class="mt-3">
+					<p class="alert alert-danger">@TempData["ErrorMessage"]</p>
+				</div>
+			}
 		</div>
 	</div>
 </div>
-
-<script>
-	function addExpense(){
-		const value = document.getElementById('newValue').value;
-		const description = document.getElementById('newDescription').value;
-
-		if (!value || !description){
-			alert("please fill out both fields")
-		}
-	}
-</script>

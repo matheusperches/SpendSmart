@@ -22,12 +22,12 @@ namespace SpendSmart.Controllers
             {
                 generatedCode = Code.GenerateShortCode();
 
-            } while (_context.Codes.Any(c => c.ShortCode == generatedCode));
-            var code = new Code {ShortCode = generatedCode };
+            } while (_context.Codes.Any(c => c.Value == generatedCode));
+            var code = new Code {Value = generatedCode };
             _context.Codes.Add(code);
             _context.SaveChanges();
 
-            TempData["GeneratedCode"] = code.ShortCode; // Pass the code to the redirected page
+            TempData["GeneratedCode"] = code.Value; // Pass the code to the redirected page
             return RedirectToAction("Index");
         }
 
@@ -36,7 +36,7 @@ namespace SpendSmart.Controllers
         {
             var code = await _context.Codes
                 .Include(c => c.Expenses)
-                .FirstOrDefaultAsync(c => c.ShortCode == codeValue);
+                .FirstOrDefaultAsync(c => c.Value == codeValue);
 
             if (code == null)
             {

@@ -6,11 +6,11 @@ namespace SpendSmart.Models
     public class Code
     {
         public int Id { get; set; }
-        public string ShortCode { get; set; } // User code 
+        public string Value { get; set; } // User code 
         public ICollection<Expense> Expenses { get; set; } = [];
         public Code()
         {
-            ShortCode = GenerateShortCode();
+            Value = GenerateShortCode();
         }
         public static string GenerateShortCode(int length = 6)
         {

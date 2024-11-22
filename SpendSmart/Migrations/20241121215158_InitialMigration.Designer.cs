@@ -11,8 +11,8 @@ using SpendSmart.Models;
 namespace SpendSmart.Migrations
 {
     [DbContext(typeof(SpendSmartDbContext))]
-    [Migration("20241121174549_RenameValuesToCodeId")]
-    partial class RenameValuesToCodeId
+    [Migration("20241121215158_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

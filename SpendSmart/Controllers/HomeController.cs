@@ -18,22 +18,23 @@ namespace SpendSmart.Controllers
             return View();
         }
 
-        [HttpGet("GetExpensesByCode")]
-        public ActionResult<IEnumerable<Expense>> GetExpensesByCode(string codeValue)
+        public ActionResult<IEnumerable<Expense>> ExpensesList(string codeValue)
         {
             // Find the code and the associated expenses 
-            var code = _context.Codes.Include(c => c.Expenses).FirstOrDefault(c => c.ShortCode == codeValue);
+            var code = _context.Codes.Include(c => c.Expenses).First(c => c.Value == codeValue);
             if (code == null)
             {
                 TempData["ErrorMessage"] = "Code not found";
                 return View("Index");
             }
+
             return View("ExpensesList", code.Expenses.ToList());
         }
 
         [HttpPost]
         public IActionResult CreateEditExpense(List<Expense> expenses)
         {
+
             foreach (var expense in expenses)
             {
                 if (expense.Id == 0)
@@ -90,22 +91,31 @@ namespace SpendSmart.Controllers
             return RedirectToAction("Expenses");
         }
 
-        public IActionResult CreateEditExpenseForm(Expense model)
+        [HttpPost]
+        public IActionResult CreateEditExpenseForm(Expense model, string codeValue)
         {
-            // Removing Id validation
+            // Remove Id validation if it's a new expense
             ModelState.Remove("Id");
 
             // Validating the model 
             if (ModelState.IsValid)
             {
+                // Fetch the CodeId from the codeValue (ShortCode) passed in the query string
+                var code = _context.Codes.FirstOrDefault(c => c.Value == codeValue);
+
+                if (code == null)
+                {
+                    // Handle invalid code value
+                    ModelState.AddModelError("", "Invalid Code.");
+                    return View(model);
+                }
+
+                // Set the CodeId in the Expense model
+                model.CodeId = code.Id;
+
                 if (model.Id == 0)
                 {
-                    var code = _context.Codes.Find(model.CodeId);
-                    if (code == null)
-                    {
-                        return NotFound(); // Handling invalid code id for any given reason
-                    }
-                    // Creating new expense
+                    // Creating a new expense
                     _context.Expenses.Add(model);
                 }
                 else
@@ -116,6 +126,7 @@ namespace SpendSmart.Controllers
                     {
                         existingExpense.Value = model.Value;
                         existingExpense.Description = model.Description;
+                        existingExpense.CodeId = model.CodeId;  // Update the CodeId if needed
                     }
                     else
                     {
@@ -125,14 +136,18 @@ namespace SpendSmart.Controllers
                     }
                 }
 
+                // Save changes to the database
                 _context.SaveChanges();
-                return RedirectToAction("ExpensesList", new {codeId = model.CodeId});
+
+                // Redirect to the expenses list with the codeId
+                return RedirectToAction("ExpensesList", new { codeValue });
             }
 
-            // If validation fails, collect errors and return to the form
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            return View(model);  // Return to the same page if validation fails
+            TempData["ErrorMessage"] = "Model error.";
+            // Return the view with validation errors if any
+            return RedirectToAction("ExpensesList");
         }
+
 
         public IActionResult Privacy()
         {
