@@ -39,20 +39,38 @@
 					{
 						@foreach (var expense in Model)
 						{
-							<tr>
-								<td>@expense.Value</td>
-								<td>@expense.Description</td>
+							<tr id="expenseRow-@expense.Id">
 								<td>
-									<form asp-controller="Expenses" asp-action="DeleteExpense" method="post">
-										<input type="hidden" name="id" value="@expense.Id" />
-										<button type="submit" class="btn btn-danger"> Delete</button>
-									</form>
+									<span class="view-mode">@expense.Value</span>
+									<input type="number" name="value" class="form-control edit-mode d-none" value="@expense.Value" step="0.01" required />
+								</td>
+								<td>
+									<span class="view-mode">@expense.Description</span>
+									<input type="text" name="description" class="form-control edit-mode d-none" value="@expense.Description" maxlength="100" required />
+								</td>
+								<td>
+									<div class="view-mode">
+										<button type="button" class="btn btn-outline-info edit-btn" data-expense-id="@expense.Id">Edit</button>
+										<form asp-controller="Home" asp-action="DeleteExpense" method="post" class="d-inline">
+											<input type="hidden" name="id" value="@expense.Id" />
+											<button type="submit" class="btn btn-outline-danger">Delete</button>
+										</form>
+									</div>
+									<div class="edit-mode d-none">
+										<form asp-controller="Home" asp-action="UpdateExpense" method="post" asp-route-codeValue="@Context.Request.Query["codeValue"]" class="d-inline">
+											<input type="hidden" name="id" value="@expense.Id" />
+											<input type="number" name="value" class="form-control" value="@expense.Value" required />
+											<input type="text" name="description" class="form-control" value="@expense.Description" maxlength="100" required />
+											<button type="submit" class="btn btn-primary">Save</button>
+										</form>
+										<button type="button" class="btn btn-secondary cancel-edit-btn">Cancel</button>
+									</div>
 								</td>
 							</tr>
 						}
 					}
 					<tr>
-						<form asp-controller="Home" asp-action="CreateEditExpenseForm" method="post" asp-route-codeValue="@Context.Request.Query["codeValue"]">
+						<form asp-controller="Home" asp-action="CreateExpense" method="post" asp-route-codeValue="@Context.Request.Query["codeValue"]">
 						<td>
 							<input type="number"
 								   name="value"
@@ -73,7 +91,6 @@
 							<button type="submit" class="btn btn-primary">Add</button>
 						</td>
 						</form>
-
 					</tr>
 				</tbody>
 			</table>
@@ -86,3 +103,28 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const rows = document.querySelectorAll("[id^='expenseRow-']");
+
+		rows.forEach(row => {
+			const editButton = row.querySelector(".edit-btn");
+			const cancelEditButton = row.querySelector(".cancel-edit-btn");
+			const viewModeElements = row.querySelectorAll(".view-mode");
+			const editModeElements = row.querySelectorAll(".edit-mode");
+
+			// Edit Button Handler
+			editButton.addEventListener("click", () => {
+				viewModeElements.forEach(el => el.classList.add("d-none"));
+				editModeElements.forEach(el => el.classList.remove("d-none"));
+			});
+
+			// Cancel Edit Button Handler
+			cancelEditButton.addEventListener("click", () => {
+				viewModeElements.forEach(el => el.classList.remove("d-none"));
+				editModeElements.forEach(el => el.classList.add("d-none"));
+			});
+		});
+	});
+</script>

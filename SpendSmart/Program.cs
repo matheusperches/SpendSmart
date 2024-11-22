@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SpendSmart.Models;
 
 namespace SpendSmart
@@ -41,7 +42,14 @@ namespace SpendSmart
             {
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<SpendSmartDbContext>();
-                context.Database.Migrate();
+                try
+                {
+                    context.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
 
             app.Run();
