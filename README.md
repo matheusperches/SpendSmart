@@ -1,7 +1,7 @@
 # SpendSmart
 - A work in progress web application for tracking spendings with user specific codes. Utilizes GitHub Actions for CI/CD operations and it is leveraging Azure's services for its hosting and database capabilities.
-- Two tables: Codes and Expenses. Each expense has a code tied to it that is used to display them.
+- Data: Tables Codes and Expenses. Each expense has a code tied to it that is used to display them.
 - Access the (work in progress) app here: https://spendsmarttest.azurewebsites.net
 - Test code with some data: SL1UEV
 
-- Using CI/CD pipelines to update this project as its developed.
+- Using CI/CD pipelines (GitHub Actions) to update this project as its developed.
